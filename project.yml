@@ -1,0 +1,65 @@
+name: CleanArchitectureSample
+options:
+  bundleIdPrefix: fum.kob
+  developmentLanguage: ja
+  deploymentTarget:
+    iOS: 13.0
+    xcodeVersion: "12.1"
+
+targets:
+  CleanArchitectureSample:
+    type: application
+    platform: iOS
+    sources: CleanArchitectureSample
+    prebuildScripts:
+      - name: Run SwiftLint
+        script: ${PODS_ROOT}/SwiftLint/swiftlint
+    settings: 
+      base:
+        DEVELOPMENT_LANGUAGE: jp
+    attributes:
+        ProvisioningStyle: Manual
+        
+  CleanArchitectureSampleTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: CleanArchitectureSampleTests
+    attributes:
+        ProvisioningStyle: Manual
+    dependencies:
+      - target: CleanArchitectureSample
+
+  CleanArchitectureSampleUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: CleanArchitectureSampleUITests
+    attributes:
+        ProvisioningStyle: Manual
+    dependencies:
+      - target: CleanArchitectureSample
+
+schemes:
+  CleanArchitectureSample:
+    build:
+      targets:
+        CleanArchitectureSample: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: true
+      coverageTargets:
+        - CleanArchitectureSample
+      targets:
+        - name: CleanArchitectureSampleTests
+          parallelizable: true
+          randomExecutionOrder: true
+        - name: CleanArchitectureSampleUITests
+          parallelizable: true
+          randomExecutionOrder: true
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release

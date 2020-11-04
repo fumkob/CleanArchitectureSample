@@ -92,3 +92,7 @@ iOSInjectionProject/
 # Bundler
 .bundle
 vendor/
+
+# For Xcodegen
+*.xcodeproj
+*.xcworkspace
