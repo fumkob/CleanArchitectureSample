@@ -19,7 +19,7 @@ targets:
         DEVELOPMENT_LANGUAGE: jp
     attributes:
         ProvisioningStyle: Manual
-        
+
   CleanArchitectureSampleTests:
     type: bundle.unit-test
     platform: iOS
