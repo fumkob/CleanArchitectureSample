@@ -1,0 +1,11 @@
+input_dir: CleanArchitectureSample/
+output_dir: CleanArchitectureSample/Generated/
+
+ib:
+  inputs:
+    - .
+  outputs:
+    - templateName: scenes-swift5
+      output: Storyboard Scenes.swift
+    - templateName: segues-swift5
+      output: Storyboard Segues.swift
