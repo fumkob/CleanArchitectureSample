@@ -32,6 +32,8 @@ internal enum StoryboardScene {
   internal enum Timeline: StoryboardType {
     internal static let storyboardName = "Timeline"
 
+    internal static let navigation = SceneType<UIKit.UINavigationController>(storyboard: Timeline.self, identifier: "navigation")
+
     internal static let timeline = SceneType<CleanArchitectureSample.TimelineViewController>(storyboard: Timeline.self, identifier: "timeline")
   }
 }
