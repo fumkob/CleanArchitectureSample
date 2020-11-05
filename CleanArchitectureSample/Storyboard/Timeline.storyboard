@@ -165,6 +165,9 @@
                     <navigationItem key="navigationItem" title="Timline" id="xqy-bg-iN2">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="person" catalog="system" id="R4m-kM-dpO"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="kOT-QJ-nEx" id="Mht-Lv-bN3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YtS-jW-CbJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
