@@ -20,6 +20,8 @@ internal enum StoryboardScene {
   internal enum LoginAccount: StoryboardType {
     internal static let storyboardName = "LoginAccount"
 
+    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: LoginAccount.self)
+
     internal static let loginAccount = SceneType<CleanArchitectureSample.LoginAccountViewController>(storyboard: LoginAccount.self, identifier: "loginAccount")
   }
   internal enum Root: StoryboardType {

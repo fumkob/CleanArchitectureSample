@@ -151,6 +151,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZNT-No-Xfg" id="eTg-2c-FZO"/>
+                                    <outlet property="delegate" destination="ZNT-No-Xfg" id="NB2-Gl-soO"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Lvr-Ij-Ajq"/>
@@ -163,7 +167,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Timline" id="xqy-bg-iN2">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="person" catalog="system" id="R4m-kM-dpO"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="person" catalog="system" id="R4m-kM-dpO">
+                            <connections>
+                                <action selector="tapPersonButton:" destination="ZNT-No-Xfg" id="kZi-IU-mUa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="kOT-QJ-nEx" id="Mht-Lv-bN3"/>

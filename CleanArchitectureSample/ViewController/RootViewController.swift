@@ -8,8 +8,15 @@
 import UIKit
 
 final class RootViewController: UIViewController {
-    private lazy var timelineNavigationController: UINavigationController = {
-        let vc = StoryboardScene.Timeline.navigation.instantiate()
+    private lazy var homeTimelineViewController: TimelineViewController = {
+        let vc = StoryboardScene.Timeline.timeline.instantiate()
+        vc.showLogin = { [unowned self] in
+            self.showLoginAccountViewController()
+        }
+        return vc
+    }()
+    private lazy var loginAccountViewController: LoginAccountViewController = {
+        let vc = StoryboardScene.LoginAccount.loginAccount.instantiate()
         return vc
     }()
     
@@ -19,6 +26,11 @@ final class RootViewController: UIViewController {
         viewSetup()
     }
     private func viewSetup() {
-        addChild(timelineNavigationController, toContainerView: view)
+        let homeTimelineNavigationController = UINavigationController(rootViewController: homeTimelineViewController)
+        addChild(homeTimelineNavigationController, toContainerView: view)
+    }
+    
+    private func showLoginAccountViewController() {
+        present(loginAccountViewController, animated: true, completion: nil)
     }
 }
