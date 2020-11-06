@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimelineViewCell" id="vQO-bY-Q6n">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TimelineViewCell" id="vQO-bY-Q6n" customClass="TimelineViewCell" customModule="CleanArchitectureSample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="64.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vQO-bY-Q6n" id="tWg-EU-nL3">
@@ -69,6 +69,12 @@
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rdc-Iu-IEW" secondAttribute="bottom" constant="5" id="ywY-Oh-XAB"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="displayName" destination="Eua-0o-q1p" id="Ctf-PG-fdf"/>
+                                            <outlet property="name" destination="jD7-lX-Ta0" id="6Ed-5M-Gm5"/>
+                                            <outlet property="profileImageView" destination="eN7-i1-p9e" id="CGy-D9-tWL"/>
+                                            <outlet property="tweet" destination="rdc-Iu-IEW" id="nMG-hi-b5l"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Loading" rowHeight="120" id="cjV-XT-iGz">
                                         <rect key="frame" x="0.0" y="92.5" width="414" height="120"/>

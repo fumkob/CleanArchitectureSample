@@ -11,12 +11,15 @@ final class RootViewController: UIViewController {
     private lazy var homeTimelineViewController: TimelineViewController = {
         let vc = StoryboardScene.Timeline.timeline.instantiate()
         vc.showLogin = { [unowned self] in
-            self.showLoginAccountViewController()
+            self.presentLoginAccountViewController()
         }
         return vc
     }()
     private lazy var loginAccountViewController: LoginAccountViewController = {
         let vc = StoryboardScene.LoginAccount.loginAccount.instantiate()
+        vc.closeWindow = {[unowned self] in
+            self.dismiss(animated: true, completion: nil)
+        }
         return vc
     }()
     
@@ -30,7 +33,9 @@ final class RootViewController: UIViewController {
         addChild(homeTimelineNavigationController, toContainerView: view)
     }
     
-    private func showLoginAccountViewController() {
-        present(loginAccountViewController, animated: true, completion: nil)
+    private func presentLoginAccountViewController() {
+        let loginAccountNavigationController = UINavigationController(rootViewController: loginAccountViewController)
+        loginAccountNavigationController.modalPresentationStyle = .fullScreen
+        present(loginAccountNavigationController, animated: true, completion: nil)
     }
 }

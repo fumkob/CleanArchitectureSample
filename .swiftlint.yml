@@ -10,7 +10,7 @@ disabled_rules:
 
 identifier_name:
   min_length: 2
-# line_length: 300
+line_length: 300
 # cyclomatic_complexity:
 #   warning: 20
 #   error: 50

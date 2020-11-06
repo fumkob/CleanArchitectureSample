@@ -38,7 +38,7 @@
                                     </constraints>
                                 </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoginAccountCell" id="Hjv-EP-Xon">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LoginAccountCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoginAccountCell" id="Hjv-EP-Xon" customClass="LoginAccountViewCell" customModule="CleanArchitectureSample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Hjv-EP-Xon" id="T2n-WM-JsQ">
@@ -67,8 +67,15 @@
                                                 <constraint firstAttribute="trailing" secondItem="ZaM-vm-c30" secondAttribute="trailing" id="kRj-pe-Ddo"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="name" destination="Oea-f2-z18" id="Amz-xj-Lzf"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="43l-oP-JJs" id="e0n-Y4-dWK"/>
+                                    <outlet property="delegate" destination="43l-oP-JJs" id="78y-U9-oLW"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pL6-Wj-tXy"/>
@@ -81,9 +88,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Login User" id="d3v-aG-irr">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gn4-FF-we2"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="h8L-oR-Vcq"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gn4-FF-we2">
+                            <connections>
+                                <action selector="tapCancel:" destination="43l-oP-JJs" id="iIy-nW-Kcr"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="h8L-oR-Vcq">
+                            <connections>
+                                <action selector="tapReload:" destination="43l-oP-JJs" id="ii1-Gr-C5H"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="footerLabel" destination="HN0-zg-0yg" id="PzZ-4m-aX8"/>
+                        <outlet property="tableView" destination="RGt-QF-Zwq" id="dyR-ZT-ncB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eIT-nz-FBU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
