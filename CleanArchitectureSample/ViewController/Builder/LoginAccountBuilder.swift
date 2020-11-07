@@ -12,9 +12,9 @@ struct LoginAccountBuilder {
         let wireframe = LoginAccountWireframeImpl()
         let vc = StoryboardScene.LoginAccount.loginAccount.instantiate()
         
-//        let presenter = HomeTimelinePresenterImpl(viewInput: vc, wireframe: wireframe, observer: SharedObserver.instance)
-//        wireframe.vc = vc
-//        vc.inject(presenter: presenter)
+        let presenter = LoginAccountPresenterImpl(viewInput: vc, wireframe: wireframe, observer: SharedObserver.instance)
+        wireframe.vc = vc
+        vc.inject(presenter: presenter)
         
         return vc
     }

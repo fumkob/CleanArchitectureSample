@@ -17,7 +17,11 @@ class LoginAccountViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var footerLabel: UILabel!
     
-    public var closeWindow: (() -> Void)?
+    private var presenter: LoginAccountPresenter?
+    
+    public func inject(presenter: LoginAccountPresenter) {
+        self.presenter = presenter
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +29,11 @@ class LoginAccountViewController: UIViewController {
     }
 
     @IBAction func tapCancel(_ sender: Any) {
-        closeWindow?()
+        presenter?.tapCancel()
     }
     
     @IBAction func tapReload(_ sender: Any) {
+        presenter?.tapReaload()
     }
     
 }
@@ -66,4 +71,3 @@ extension LoginAccountViewController: UITableViewDataSource, UITableViewDelegate
         
     }
 }
-

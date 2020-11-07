@@ -43,7 +43,7 @@ public class HomeTimelinePresenterImpl: TimelinePresenter {
         viewInput?.setCondition(isSelectable: true)
     }
     public func loadTimeline() {
-        //Timelineをフェッチする
+        //Timelineをfetchする
         viewInput?.changedStatus(.loading)
     }
     public func selectCell() {
