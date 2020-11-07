@@ -84,14 +84,18 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NjZ-OK-FvZ">
-                                                    <rect key="frame" x="169.5" y="49.5" width="75" height="21"/>
+                                                    <rect key="frame" x="169.5" y="61" width="75" height="20.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="c0a-oH-fCd"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="NjZ-OK-FvZ" firstAttribute="centerY" secondItem="LSj-mr-MeV" secondAttribute="centerY" id="8Hu-a7-Nmv"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="NjZ-OK-FvZ" secondAttribute="bottom" constant="50" id="Jph-Wy-xNw"/>
+                                                <constraint firstItem="NjZ-OK-FvZ" firstAttribute="top" secondItem="LSj-mr-MeV" secondAttribute="topMargin" constant="50" id="VNV-6l-uyo"/>
                                                 <constraint firstItem="NjZ-OK-FvZ" firstAttribute="centerX" secondItem="LSj-mr-MeV" secondAttribute="centerX" id="kyQ-Oe-E4F"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -104,14 +108,18 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4p-z0-2jb">
-                                                    <rect key="frame" x="177" y="49.5" width="60" height="21"/>
+                                                    <rect key="frame" x="177" y="61" width="60" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="55a-Ud-aWH"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="t4p-z0-2jb" firstAttribute="centerY" secondItem="OtO-EB-tqY" secondAttribute="centerY" id="9dh-OM-6x9"/>
+                                                <constraint firstItem="t4p-z0-2jb" firstAttribute="top" secondItem="OtO-EB-tqY" secondAttribute="topMargin" constant="50" id="Q64-e4-1Jr"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="t4p-z0-2jb" secondAttribute="bottom" constant="50" id="fI3-dt-l6A"/>
                                                 <constraint firstItem="t4p-z0-2jb" firstAttribute="centerX" secondItem="OtO-EB-tqY" secondAttribute="centerX" id="hLG-G0-vs4"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -124,7 +132,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An error occured" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uln-gu-ZCe">
-                                                    <rect key="frame" x="142.5" y="49.5" width="129" height="21"/>
+                                                    <rect key="frame" x="142.5" y="61" width="129" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="UXB-nm-7zX"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
@@ -132,7 +143,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Uln-gu-ZCe" firstAttribute="centerX" secondItem="yXV-Bj-wVB" secondAttribute="centerX" id="8c0-Td-ihN"/>
-                                                <constraint firstItem="Uln-gu-ZCe" firstAttribute="centerY" secondItem="yXV-Bj-wVB" secondAttribute="centerY" id="PuQ-CL-qbp"/>
+                                                <constraint firstItem="Uln-gu-ZCe" firstAttribute="top" secondItem="yXV-Bj-wVB" secondAttribute="topMargin" constant="50" id="Oat-xQ-h8u"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Uln-gu-ZCe" secondAttribute="bottom" constant="50" id="REB-JD-Y02"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -144,14 +156,18 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not select authorized user yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMH-Ud-Roz">
-                                                    <rect key="frame" x="92.5" y="49.5" width="229" height="21"/>
+                                                    <rect key="frame" x="92.5" y="61" width="229" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="fTU-BB-40S"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="gMH-Ud-Roz" firstAttribute="centerY" secondItem="dlQ-P6-gU9" secondAttribute="centerY" id="qJz-jd-Ytn"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="gMH-Ud-Roz" secondAttribute="bottom" constant="50" id="5fE-nu-xgb"/>
+                                                <constraint firstItem="gMH-Ud-Roz" firstAttribute="top" secondItem="dlQ-P6-gU9" secondAttribute="topMargin" constant="50" id="i0k-O7-ff1"/>
                                                 <constraint firstItem="gMH-Ud-Roz" firstAttribute="centerX" secondItem="dlQ-P6-gU9" secondAttribute="centerX" id="zDX-eB-8FA"/>
                                             </constraints>
                                         </tableViewCellContentView>
