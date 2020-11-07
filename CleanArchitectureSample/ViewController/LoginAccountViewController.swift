@@ -17,7 +17,7 @@ class LoginAccountViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var footerLabel: UILabel!
     
-    public var closeWindow: (() -> Void)!
+    public var closeWindow: (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class LoginAccountViewController: UIViewController {
     }
 
     @IBAction func tapCancel(_ sender: Any) {
-        closeWindow()
+        closeWindow?()
     }
     
     @IBAction func tapReload(_ sender: Any) {

@@ -1,6 +1,11 @@
 setup:
 	xcodegen generate
 	bundle exec pod install
+	
+setopen:
+	xcodegen generate
+	bundle exec pod install
+	open CleanArchitectureSample.xcworkspace
 # 
 # environment:
 # 	rbenv install -s

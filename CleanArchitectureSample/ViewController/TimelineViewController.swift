@@ -11,21 +11,30 @@ public protocol TimelineViewInput: class {
     func setCondition(isSelectable: Bool)
     func setTimelinesModel()
     func setUserModel()
-    func changedStatus()
+    func changedStatus(_: TimelineStatus)
 }
 
 class TimelineViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    private var presenter: TimelinePresenter?
+    
+    private var timelineStatus: TimelineStatus = .normal
+    
     private let headerUserViewNib = Nib<TimelineUserHeaderView>()
     private var headerUserView: TimelineUserHeaderView!
-    public var showLogin: (() -> Void)!
+    
+    public func inject(presenter: TimelinePresenter) {
+        self.presenter = presenter
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+        presenter?.loadCondition()
+        presenter?.loadTimeline()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,7 +44,7 @@ class TimelineViewController: UIViewController {
     }
     
     @IBAction func tapPersonButton(_ sender: Any) {
-        showLogin()
+        presenter?.tapPersonButton()
     }
 }
 
@@ -52,7 +61,11 @@ extension TimelineViewController {
 // MARK: - TimelineViewInput
 extension TimelineViewController: TimelineViewInput {
     func setCondition(isSelectable: Bool) {
-        return
+        tableView.allowsSelection = isSelectable
+        
+        if !isSelectable {
+            navigationItem.rightBarButtonItem = nil
+        }
     }
     
     func setUserModel() {
@@ -64,7 +77,8 @@ extension TimelineViewController: TimelineViewInput {
         self.tableView.reloadData()
     }
     
-    func changedStatus() {
+    func changedStatus(_ status: TimelineStatus) {
+        self.timelineStatus = status
         self.tableView.reloadData()
     }
 }
@@ -76,19 +90,40 @@ extension TimelineViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        switch timelineStatus {
+        case .normal: return 10
+        default: return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineViewCell", for: indexPath) as? TimelineViewCell else {
-            fatalError("Error with cell type")
+        switch timelineStatus {
+        case .normal:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineViewCell", for: indexPath) as? TimelineViewCell else {
+                fatalError("Error with cell type")
+            }
+            cell.updateCell()
+            return cell
+        case .notAuthorized:
+            return tableView.dequeueReusableCell(withIdentifier: "NotAuthorized", for: indexPath)
+        case .loading:
+            return tableView.dequeueReusableCell(withIdentifier: "Loading", for: indexPath)
+        case .error:
+            return tableView.dequeueReusableCell(withIdentifier: "Error", for: indexPath)
+        case .none:
+            return tableView.dequeueReusableCell(withIdentifier: "Nodata", for: indexPath)
         }
-        
-        cell.updateCell()
-        return cell
     }
 }
 
 // MARK: - TableView Delegate
 extension TimelineViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch timelineStatus {
+        case .normal:
+            presenter?.selectCell()
+        default:
+            return
+        }
+    }
 }
