@@ -15,11 +15,11 @@ class TimelineViewCell: UITableViewCell {
     @IBOutlet weak var tweet: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     
-    public func updateCell() {
-        self.name.text = "@Name"
-        self.displayName.text = "Name"
-        self.tweet.text = "Some Tweets."
-        self.profileImageView.kf.setImage(with: URL(string: ""))
+    public func updateCell(timelineModel: TimelineViewModel) {
+        self.name.text = timelineModel.screenName
+        self.displayName.text = timelineModel.name
+        self.tweet.text = timelineModel.tweet
+        self.profileImageView.kf.setImage(with: URL(string: timelineModel.profileUrl))
     }
     
 //    public func isSelected(_ isSelected: Bool) {

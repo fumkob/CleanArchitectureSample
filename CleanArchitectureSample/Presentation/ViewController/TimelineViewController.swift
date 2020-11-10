@@ -7,10 +7,10 @@
 
 import UIKit
 
-public protocol TimelineViewInput: class {
+protocol TimelineViewInput: class {
     func setCondition(isSelectable: Bool)
-    func setTimelinesModel()
-    func setUserModel()
+    func setTimelinesModel(_: TimelinesModel)
+    func setUserModel(_: UserViewModel)
     func changedStatus(_: TimelineStatus)
 }
 
@@ -19,8 +19,8 @@ class TimelineViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private var presenter: TimelinePresenter?
-    
-    private var timelineStatus: TimelineStatus = .normal
+    private var timelines: [TimelineViewModel] = []
+    private var timelineStatus: TimelineStatus = .loading
     
     private let headerUserViewNib = Nib<TimelineUserHeaderView>()
     private var headerUserView: TimelineUserHeaderView!
@@ -68,12 +68,13 @@ extension TimelineViewController: TimelineViewInput {
         }
     }
     
-    func setUserModel() {
-        headerUserView.updateView()
+    func setUserModel(_ userModel: UserViewModel) {
+        headerUserView.updateView(userModel)
         tableView.tableHeaderView = headerUserView
     }
     
-    func setTimelinesModel() {
+    func setTimelinesModel(_ timelinesModel: TimelinesModel) {
+        timelines = timelinesModel.timelines
         self.tableView.reloadData()
     }
     
@@ -91,7 +92,7 @@ extension TimelineViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch timelineStatus {
-        case .normal: return 10
+        case .normal: return timelines.count
         default: return 1
         }
     }
@@ -102,7 +103,8 @@ extension TimelineViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TimelineViewCell", for: indexPath) as? TimelineViewCell else {
                 fatalError("Error with cell type")
             }
-            cell.updateCell()
+            let timeline = timelines[indexPath.row]
+            cell.updateCell(timelineModel: timeline)
             return cell
         case .notAuthorized:
             return tableView.dequeueReusableCell(withIdentifier: "NotAuthorized", for: indexPath)
@@ -121,7 +123,7 @@ extension TimelineViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch timelineStatus {
         case .normal:
-            presenter?.selectCell()
+            presenter?.selectCell(timeline: timelines[indexPath.row])
         default:
             return
         }

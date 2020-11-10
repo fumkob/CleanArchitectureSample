@@ -17,11 +17,11 @@ class TimelineUserHeaderView: UIView {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     
-    public func updateView() {
-        self.name.text = "@hoge"
-        self.displayName.text = "hogeName"
-        self.profileImageView.kf.setImage(with: URL(string: ""))
-        self.backgroundImageView.kf.setImage(with: URL(string: ""))
-        self.discriptionLabel.text = "Some Discription"
+    public func updateView(_ timelineModel: UserViewModel) {
+        self.name.text = timelineModel.screenName
+        self.displayName.text = timelineModel.name
+        self.profileImageView.kf.setImage(with: URL(string: timelineModel.profileUrl))
+        self.backgroundImageView.kf.setImage(with: URL(string: timelineModel.profileBackgroundUrl))
+        self.discriptionLabel.text = timelineModel.userDescription
     }
 }

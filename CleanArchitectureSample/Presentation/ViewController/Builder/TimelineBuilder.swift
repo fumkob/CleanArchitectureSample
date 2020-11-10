@@ -9,10 +9,14 @@ import UIKit
 
 struct HomeTimelineBuilder {
     func build() -> UIViewController {
+        let useCase = TimelineUseCaseImpl(
+            loginAccountRepository: LoginAccountRepositoryImpl(),
+            socialAccountRepository: SocialAccountRepositoryImpl(),
+            timelineRepository: TimelineRepositoryImpl())
         let wireframe = HomeTimelineWireframeImpl()
         let vc = StoryboardScene.Timeline.timeline.instantiate()
         
-        let presenter = HomeTimelinePresenterImpl(viewInput: vc, wireframe: wireframe, observer: SharedObserver.instance)
+        let presenter = HomeTimelinePresenterImpl(useCase: useCase, viewInput: vc, wireframe: wireframe, observer: SharedObserver.instance)
         wireframe.vc = vc
         vc.inject(presenter: presenter)
         
@@ -28,10 +32,14 @@ struct UserTimelineBuilder {
     }
     
     func build() -> UIViewController {
+        let useCase = TimelineUseCaseImpl(
+            loginAccountRepository: LoginAccountRepositoryImpl(),
+            socialAccountRepository: SocialAccountRepositoryImpl(),
+            timelineRepository: TimelineRepositoryImpl())
         let wireframe = UserTimelineWireframeImpl()
         let vc = StoryboardScene.Timeline.timeline.instantiate()
         
-        let presenter = UserTimelinePresenterImpl(viewInput: vc, wireframe: wireframe, screenName: screenName)
+        let presenter = UserTimelinePresenterImpl(useCase: useCase, viewInput: vc, wireframe: wireframe, screenName: screenName)
         wireframe.vc = vc
         vc.inject(presenter: presenter)
         
