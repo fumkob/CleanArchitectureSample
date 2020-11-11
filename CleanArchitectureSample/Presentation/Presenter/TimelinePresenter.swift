@@ -46,6 +46,7 @@ public class HomeTimelinePresenterImpl: TimelinePresenter {
     }
     public func loadTimeline() {
         useCase.loadTimelines()
+            .debug("Presenter: loadTimeline")
             .subscribe(onNext: { [weak self] timelines in
                 self?.loadedTimelinesModel(timelines: timelines)
             }, onError: { [weak self] error in

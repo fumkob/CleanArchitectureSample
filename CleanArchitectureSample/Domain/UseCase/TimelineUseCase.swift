@@ -31,11 +31,11 @@ struct TimelineUseCaseImpl: TimelineUseCase {
         let login = loginAccountRepository.getSelectedTwitterAccount()
         let accounts = socialAccountRepository.getTwitterAccounts()
         
-        return Observable.combineLatest(login, accounts) { ($0, $1)}
-//            .do{print($0)}
+        return Observable.combineLatest(login, accounts) { ($0, $1) }
+//            .do{print("login: \($0), accounts: \($1)")}
             .flatMap { (identifier, accounts) -> Observable<TimelinesModel> in
                 guard let identifier = identifier,
-                      let selectedAccount = accounts.filter({$0.identifier.isEqual(to: identifier)}).first else {
+                      let selectedAccount = accounts.filter({$0.identifier == identifier}).first else {
                     return Observable.error(APIError.notAuthorized)
                 }
                 return timelineRepository.getTwitterTimelines(selectedAccount)
@@ -49,7 +49,7 @@ struct TimelineUseCaseImpl: TimelineUseCase {
         return Observable.combineLatest(login, accounts) { ($0, $1)}
             .flatMap { (identifier, accounts) -> Observable<TimelinesModel> in
                 guard let identifier = identifier,
-                      let selectedAccount = accounts.filter({$0.identifier.isEqual(to: identifier)}).first else {
+                      let selectedAccount = accounts.filter({$0.identifier == identifier}).first else {
                     return Observable.error(APIError.notAuthorized)
                 }
                 return timelineRepository.getTwitterUserTimelines(selectedAccount, screenName: screenName)

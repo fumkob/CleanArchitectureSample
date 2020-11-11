@@ -9,10 +9,14 @@ import UIKit
 
 struct LoginAccountBuilder {
     func build() -> UIViewController {
+        let useCase = LoginAccountUseCaseImpl(
+            loginAccountRepository: LoginAccountRepositoryImpl(),
+            socialAccountRepository: SocialAccountRepositoryImpl()
+        )
         let wireframe = LoginAccountWireframeImpl()
         let vc = StoryboardScene.LoginAccount.loginAccount.instantiate()
         
-        let presenter = LoginAccountPresenterImpl(viewInput: vc, wireframe: wireframe, observer: SharedObserver.instance)
+        let presenter = LoginAccountPresenterImpl(useCase: useCase, viewInput: vc, wireframe: wireframe, observer: SharedObserver.instance)
         wireframe.vc = vc
         vc.inject(presenter: presenter)
         

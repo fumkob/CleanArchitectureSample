@@ -7,19 +7,18 @@
 
 import Foundation
 import RxSwift
-import Accounts
 
 protocol TimelineRepository {
-    func getTwitterTimelines(_ account: ACAccount) -> Observable<TimelinesModel>
-    func getTwitterUserTimelines(_ account: ACAccount, screenName: String) -> Observable<TimelinesModel>
+    func getTwitterTimelines(_ account: ACAccountPlus) -> Observable<TimelinesModel>
+    func getTwitterUserTimelines(_ account: ACAccountPlus, screenName: String) -> Observable<TimelinesModel>
 }
 
 public class TimelineRepositoryImpl: TimelineRepository {
-    public func getTwitterTimelines(_ account: ACAccount) -> Observable<TimelinesModel> {
+    public func getTwitterTimelines(_ account: ACAccountPlus) -> Observable<TimelinesModel> {
         return .just(TimelinesModel())
     }
     
-    public func getTwitterUserTimelines(_ account: ACAccount, screenName: String) -> Observable<TimelinesModel> {
+    public func getTwitterUserTimelines(_ account: ACAccountPlus, screenName: String) -> Observable<TimelinesModel> {
         return .just(TimelinesModel())
     }
 }

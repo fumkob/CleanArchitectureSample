@@ -7,14 +7,13 @@
 
 import Foundation
 import RxSwift
-import Accounts
 
 protocol SocialAccountRepository {
-    func getTwitterAccounts() -> Observable<[ACAccount]>
+    func getTwitterAccounts() -> Observable<[ACAccountPlus]>
 }
 
 public class SocialAccountRepositoryImpl: SocialAccountRepository {
-    public func getTwitterAccounts() -> Observable<[ACAccount]> {
-        return .just([ACAccount()])
+    public func getTwitterAccounts() -> Observable<[ACAccountPlus]> {
+        return .just([ACAccountPlus()])
     }
 }

@@ -94,11 +94,18 @@
                                 <action selector="tapCancel:" destination="43l-oP-JJs" id="iIy-nW-Kcr"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="h8L-oR-Vcq">
-                            <connections>
-                                <action selector="tapReload:" destination="43l-oP-JJs" id="ii1-Gr-C5H"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="h8L-oR-Vcq">
+                                <connections>
+                                    <action selector="tapReload:" destination="43l-oP-JJs" id="ii1-Gr-C5H"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="Xvh-Ai-IX8">
+                                <connections>
+                                    <action selector="tapAdd:" destination="43l-oP-JJs" id="dzc-0i-I3e"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="footerLabel" destination="HN0-zg-0yg" id="PzZ-4m-aX8"/>

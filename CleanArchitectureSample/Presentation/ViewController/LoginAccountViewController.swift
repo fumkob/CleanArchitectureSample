@@ -8,8 +8,8 @@
 import UIKit
 
 protocol LoginAccountViewInput: class {
-    func setAccountsModel()
-    func changedStatus()
+    func setAccountsModel(_: RegisteredAccountsModel)
+    func changedStatus(_: LoginAccountStatus)
 }
 
 class LoginAccountViewController: UIViewController {
@@ -18,6 +18,8 @@ class LoginAccountViewController: UIViewController {
     @IBOutlet weak var footerLabel: UILabel!
     
     private var presenter: LoginAccountPresenter?
+    private var twitterAccountsModel: RegisteredAccountsModel?
+    private var accountStatus: LoginAccountStatus = .none
     
     public func inject(presenter: LoginAccountPresenter) {
         self.presenter = presenter
@@ -25,9 +27,10 @@ class LoginAccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        presenter?.loadAccounts()
     }
 
+    // MARK: Button Action
     @IBAction func tapCancel(_ sender: Any) {
         presenter?.tapCancel()
     }
@@ -36,15 +39,26 @@ class LoginAccountViewController: UIViewController {
         presenter?.tapReaload()
     }
     
+    @IBAction func tapAdd(_ sender: Any) {
+        presenter?.tapAdd()
+    }
 }
 
 // MARK: - Login Account View Input
 extension LoginAccountViewController: LoginAccountViewInput {
-    func setAccountsModel() {
+    func setAccountsModel(_ accountsModel: RegisteredAccountsModel) {
+        twitterAccountsModel = accountsModel
         self.tableView.reloadData()
     }
-    func changedStatus() {
-        footerLabel.text = "Select use account"
+    
+    func changedStatus(_ status: LoginAccountStatus) {
+        switch status {
+        case .normal: footerLabel.text = "Select use account"
+        case .error: footerLabel.text = "An error occured"
+        case .notAuthorized: footerLabel.text = "Not authorized"
+        case .none: footerLabel.text = "No twitter user"
+        }
+        
     }
 }
 
@@ -55,7 +69,7 @@ extension LoginAccountViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return (twitterAccountsModel?.accounts.count) ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -63,11 +77,12 @@ extension LoginAccountViewController: UITableViewDataSource, UITableViewDelegate
             fatalError("Error in LoginAccountCell")
         }
         
-        cell.updateCell()
+        guard let twitterAccountModel = twitterAccountsModel?.accounts[indexPath.row] else { fatalError("twitterAccountModel Error") }
+        cell.updateCell(twitterAccountModel)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        presenter?.selectAccount(indexPath.row)
     }
 }

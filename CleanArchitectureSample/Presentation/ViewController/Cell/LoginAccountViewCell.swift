@@ -11,9 +11,9 @@ class LoginAccountViewCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
     
-    public func updateCell() {
-        self.name.text = "@name"
-        self.isSelected(true)
+    public func updateCell(_ accountModel: RegisteredAccountModel) {
+        self.name.text = "@" + accountModel.name
+        self.isSelected(accountModel.isSelected)
     }
     
     private func isSelected(_ isSelected: Bool) {
