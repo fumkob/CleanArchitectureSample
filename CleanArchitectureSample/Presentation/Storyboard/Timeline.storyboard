@@ -86,7 +86,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NjZ-OK-FvZ">
                                                     <rect key="frame" x="169.5" y="61" width="75" height="20.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="c0a-oH-fCd"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="c0a-oH-fCd"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
@@ -110,7 +110,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4p-z0-2jb">
                                                     <rect key="frame" x="177" y="61" width="60" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="55a-Ud-aWH"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="55a-Ud-aWH"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
@@ -134,7 +134,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An error occured" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uln-gu-ZCe">
                                                     <rect key="frame" x="142.5" y="61" width="129" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="UXB-nm-7zX"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="UXB-nm-7zX"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
@@ -158,7 +158,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not select authorized user yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gMH-Ud-Roz">
                                                     <rect key="frame" x="92.5" y="61" width="229" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="fTU-BB-40S"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="fTU-BB-40S"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="systemGrayColor"/>
