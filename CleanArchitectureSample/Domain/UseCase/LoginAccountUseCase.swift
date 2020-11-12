@@ -50,7 +50,7 @@ struct LoginAccountUseCaseImpl: LoginAccountUseCase {
     }
     
     func addAccount() -> Observable<Void> {
-        return loginAccountRepository.getNewTwitterAccount()
+        return socialAccountRepository.getNewTwitterAccount()
     }
     
 }

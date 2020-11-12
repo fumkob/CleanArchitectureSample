@@ -14,11 +14,17 @@ protocol TimelineRepository {
 }
 
 public class TimelineRepositoryImpl: TimelineRepository {
+    private let dataStore: TimelineDataStore
+    
+    public init(dataStore: TimelineDataStore) {
+        self.dataStore = dataStore
+    }
+    
     public func getTwitterTimelines(_ account: ACAccountPlus) -> Observable<[TimelineEntity]> {
-        return .just([])
+        return dataStore.getHomeTimelines(account)
     }
     
     public func getTwitterUserTimelines(_ account: ACAccountPlus, screenName: String) -> Observable<[TimelineEntity]> {
-        return .just([])
+        return dataStore.getUserTimelines(account, screenName: screenName)
     }
 }

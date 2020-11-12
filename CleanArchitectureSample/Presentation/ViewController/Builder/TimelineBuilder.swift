@@ -10,9 +10,9 @@ import UIKit
 struct HomeTimelineBuilder {
     func build() -> UIViewController {
         let useCase = TimelineUseCaseImpl(
-            loginAccountRepository: LoginAccountRepositoryImpl(),
-            socialAccountRepository: SocialAccountRepositoryImpl(),
-            timelineRepository: TimelineRepositoryImpl())
+            loginAccountRepository: LoginAccountRepositoryImpl(dataStore: LoginAccountDataStoreImpl()),
+            socialAccountRepository: SocialAccountRepositoryImpl(dataStore: SocialAccountDataStoreImpl()),
+            timelineRepository: TimelineRepositoryImpl(dataStore: TimelineDataStoreImpl()))
         let wireframe = HomeTimelineWireframeImpl()
         let vc = StoryboardScene.Timeline.timeline.instantiate()
         
@@ -33,9 +33,9 @@ struct UserTimelineBuilder {
     
     func build() -> UIViewController {
         let useCase = TimelineUseCaseImpl(
-            loginAccountRepository: LoginAccountRepositoryImpl(),
-            socialAccountRepository: SocialAccountRepositoryImpl(),
-            timelineRepository: TimelineRepositoryImpl())
+            loginAccountRepository: LoginAccountRepositoryImpl(dataStore: LoginAccountDataStoreImpl()),
+            socialAccountRepository: SocialAccountRepositoryImpl(dataStore: SocialAccountDataStoreImpl()),
+            timelineRepository: TimelineRepositoryImpl(dataStore: TimelineDataStoreImpl()))
         let wireframe = UserTimelineWireframeImpl()
         let vc = StoryboardScene.Timeline.timeline.instantiate()
         

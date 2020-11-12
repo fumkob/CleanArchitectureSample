@@ -12,23 +12,24 @@ protocol LoginAccountRepository {
     func getSelectedTwitterAccount() -> Observable<String?>
     func updateSelectedTwitterAccount(_ account: ACAccountPlus) -> Observable<Void>
     func deleteTwitterAccount() -> Observable<Void>
-    func getNewTwitterAccount() -> Observable<Void>
 }
 
 public class LoginAccountRepositoryImpl: LoginAccountRepository {
+    private let dataStore: LoginAccountDataStore
+    
+    public init(dataStore: LoginAccountDataStore) {
+        self.dataStore = dataStore
+    }
+    
     public func getSelectedTwitterAccount() -> Observable<String?> {
-        return .just("some")
+        return dataStore.getSelectedTwitterAccountId()
     }
     
     public func updateSelectedTwitterAccount(_ account: ACAccountPlus) -> Observable<Void> {
-        return .just(())
+        return dataStore.updateSelectedTwitterAccountId(account)
     }
     
     public func deleteTwitterAccount() -> Observable<Void> {
-        return .just(())
-    }
-    
-    public func getNewTwitterAccount() -> Observable<Void> {
-        return .just(())
+        return dataStore.deleteSelectedTwitterAccountId()
     }
 }
