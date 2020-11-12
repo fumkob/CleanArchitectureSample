@@ -19,7 +19,7 @@ public struct TimelineModel: TimelineViewModel, UserViewModel {
     let profileBackgroundUrl: String
     let userDescription: String
     
-    init() {
+    init(rowTimelineModel: TimelineEntity) {
         name = ""
         screenName = ""
         profileUrl = ""
