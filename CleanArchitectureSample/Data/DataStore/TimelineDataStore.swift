@@ -12,3 +12,12 @@ public protocol TimelineDataStore {
     func getHomeTimelines(_ account: ACAccountPlus) -> Observable<[TimelineEntity]>
     func getUserTimelines(_ account: ACAccountPlus, screenName: String) -> Observable<[TimelineEntity]>
 }
+
+public class TimelineDataStoreImpl: TimelineDataStore {
+    public func getHomeTimelines(_ account: ACAccountPlus) -> Observable<[TimelineEntity]> {
+        return .just([])
+    }
+    public func getUserTimelines(_ account: ACAccountPlus, screenName: String) -> Observable<[TimelineEntity]> {
+        return .just([])
+    }
+}
