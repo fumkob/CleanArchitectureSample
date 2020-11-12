@@ -12,7 +12,6 @@ protocol LoginAccountRepository {
     func getSelectedTwitterAccount() -> Observable<String?>
     func updateSelectedTwitterAccount(_ account: ACAccountPlus) -> Observable<Void>
     func deleteTwitterAccount() -> Observable<Void>
-    func getNewTwitterAccount() -> Observable<Void>
 }
 
 public class LoginAccountRepositoryImpl: LoginAccountRepository {
@@ -25,10 +24,6 @@ public class LoginAccountRepositoryImpl: LoginAccountRepository {
     }
     
     public func deleteTwitterAccount() -> Observable<Void> {
-        return .just(())
-    }
-    
-    public func getNewTwitterAccount() -> Observable<Void> {
         return .just(())
     }
 }
