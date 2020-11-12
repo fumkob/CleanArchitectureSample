@@ -33,7 +33,8 @@ struct LoginAccountUseCaseImpl: LoginAccountUseCase {
         
         return Observable.combineLatest(accounts, login) { ($0, $1) }
             .flatMap { (accounts, identifier) -> Observable<RegisteredAccountsModel> in
-                return Observable.just(RegisteredAccountsModel())
+                return Observable.just((accounts, identifier))
+                    .map(translator: RegisteredAccountTranslator())
             }
     }
     
