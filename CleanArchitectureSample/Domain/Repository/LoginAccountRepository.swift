@@ -15,15 +15,21 @@ protocol LoginAccountRepository {
 }
 
 public class LoginAccountRepositoryImpl: LoginAccountRepository {
+    private let dataStore: LoginAccountDataStore
+    
+    public init(dataStore: LoginAccountDataStore) {
+        self.dataStore = dataStore
+    }
+    
     public func getSelectedTwitterAccount() -> Observable<String?> {
-        return .just("some")
+        return dataStore.getSelectedTwitterAccountId()
     }
     
     public func updateSelectedTwitterAccount(_ account: ACAccountPlus) -> Observable<Void> {
-        return .just(())
+        return dataStore.updateSelectedTwitterAccountId(account)
     }
     
     public func deleteTwitterAccount() -> Observable<Void> {
-        return .just(())
+        return dataStore.deleteSelectedTwitterAccountId()
     }
 }

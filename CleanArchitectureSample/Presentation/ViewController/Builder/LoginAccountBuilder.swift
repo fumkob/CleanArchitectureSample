@@ -10,7 +10,7 @@ import UIKit
 struct LoginAccountBuilder {
     func build() -> UIViewController {
         let useCase = LoginAccountUseCaseImpl(
-            loginAccountRepository: LoginAccountRepositoryImpl(),
+            loginAccountRepository: LoginAccountRepositoryImpl(dataStore: LoginAccountDataStoreImpl()),
             socialAccountRepository: SocialAccountRepositoryImpl(dataStore: SocialAccountDataStoreImpl())
         )
         let wireframe = LoginAccountWireframeImpl()
