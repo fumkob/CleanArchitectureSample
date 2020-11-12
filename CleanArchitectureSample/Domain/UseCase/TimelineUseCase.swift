@@ -39,6 +39,7 @@ struct TimelineUseCaseImpl: TimelineUseCase {
                     return Observable.error(APIError.notAuthorized)
                 }
                 return timelineRepository.getTwitterTimelines(selectedAccount)
+                    .map(translator: TimelineTranslator())
             }
     }
     
@@ -53,6 +54,7 @@ struct TimelineUseCaseImpl: TimelineUseCase {
                     return Observable.error(APIError.notAuthorized)
                 }
                 return timelineRepository.getTwitterUserTimelines(selectedAccount, screenName: screenName)
+                    .map(translator: TimelineTranslator())
             }
     }
     

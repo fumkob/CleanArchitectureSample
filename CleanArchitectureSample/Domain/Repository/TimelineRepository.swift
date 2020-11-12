@@ -9,16 +9,16 @@ import Foundation
 import RxSwift
 
 protocol TimelineRepository {
-    func getTwitterTimelines(_ account: ACAccountPlus) -> Observable<TimelinesModel>
-    func getTwitterUserTimelines(_ account: ACAccountPlus, screenName: String) -> Observable<TimelinesModel>
+    func getTwitterTimelines(_ account: ACAccountPlus) -> Observable<[TimelineEntity]>
+    func getTwitterUserTimelines(_ account: ACAccountPlus, screenName: String) -> Observable<[TimelineEntity]>
 }
 
 public class TimelineRepositoryImpl: TimelineRepository {
-    public func getTwitterTimelines(_ account: ACAccountPlus) -> Observable<TimelinesModel> {
-        return .just(TimelinesModel())
+    public func getTwitterTimelines(_ account: ACAccountPlus) -> Observable<[TimelineEntity]> {
+        return .just([])
     }
     
-    public func getTwitterUserTimelines(_ account: ACAccountPlus, screenName: String) -> Observable<TimelinesModel> {
-        return .just(TimelinesModel())
+    public func getTwitterUserTimelines(_ account: ACAccountPlus, screenName: String) -> Observable<[TimelineEntity]> {
+        return .just([])
     }
 }
