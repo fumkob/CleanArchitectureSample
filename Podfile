@@ -12,7 +12,6 @@ target 'CleanArchitectureSample' do
   pod 'OAuthSwift', '~> 2.0.0'
   pod 'SwiftGen', '~> 6.0'
   pod 'ObjectMapper', '~> 3.5'
-  pod 'RealmSwift'
 
   # Pods for CleanArchitectureSample
 
