@@ -20,11 +20,11 @@ public struct TimelineModel: TimelineViewModel, UserViewModel {
     let userDescription: String
     
     init(rowTimelineModel: TimelineEntity) {
-        name = ""
-        screenName = ""
-        profileUrl = ""
-        tweet = ""
-        profileBackgroundUrl = ""
-        userDescription = ""
+        name = rowTimelineModel.user?.name ?? ""
+        screenName = rowTimelineModel.user?.screenName ?? ""
+        profileUrl = rowTimelineModel.user?.profileUrl ?? ""
+        tweet = rowTimelineModel.text
+        profileBackgroundUrl = rowTimelineModel.user?.profileBackgroundUrl ?? ""
+        userDescription = rowTimelineModel.user?.userDescription ?? ""
     }
 }
