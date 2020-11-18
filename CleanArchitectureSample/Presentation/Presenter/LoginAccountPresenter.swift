@@ -100,6 +100,7 @@ extension LoginAccountPresenterImpl {
         DispatchQueue.main.async { [weak self] in
             self?.wireframe?.closeWindow()
         }
+        observer.selectPersonObserver.onNext(())
     }
     
     private func errorHandlling(error: Error) {

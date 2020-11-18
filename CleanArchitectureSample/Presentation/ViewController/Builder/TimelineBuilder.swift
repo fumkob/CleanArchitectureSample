@@ -12,7 +12,7 @@ struct HomeTimelineBuilder {
         let useCase = TimelineUseCaseImpl(
             loginAccountRepository: LoginAccountRepositoryImpl(dataStore: LoginAccountDataStoreImpl()),
             socialAccountRepository: SocialAccountRepositoryImpl(dataStore: SocialAccountDataStoreImpl(client: OAuthClientImpl())),
-            timelineRepository: TimelineRepositoryImpl(dataStore: TimelineDataStoreImpl()))
+            timelineRepository: TimelineRepositoryImpl(dataStore: TimelineDataStoreImpl(client: OAuthClientImpl())))
         let wireframe = HomeTimelineWireframeImpl()
         let vc = StoryboardScene.Timeline.timeline.instantiate()
         
@@ -35,7 +35,7 @@ struct UserTimelineBuilder {
         let useCase = TimelineUseCaseImpl(
             loginAccountRepository: LoginAccountRepositoryImpl(dataStore: LoginAccountDataStoreImpl()),
             socialAccountRepository: SocialAccountRepositoryImpl(dataStore: SocialAccountDataStoreImpl(client: OAuthClientImpl())),
-            timelineRepository: TimelineRepositoryImpl(dataStore: TimelineDataStoreImpl()))
+            timelineRepository: TimelineRepositoryImpl(dataStore: TimelineDataStoreImpl(client: OAuthClientImpl())))
         let wireframe = UserTimelineWireframeImpl()
         let vc = StoryboardScene.Timeline.timeline.instantiate()
         

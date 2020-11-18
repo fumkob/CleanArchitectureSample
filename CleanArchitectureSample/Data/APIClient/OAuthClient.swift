@@ -8,9 +8,11 @@
 import Foundation
 import OAuthSwift
 import RxSwift
+import ObjectMapper
 
 protocol OAuthClient {
     func getOAuthToken() -> Single<[String: String]>
+    func getAPIRequestResult(of: URL, account: ACAccountPlus) -> Observable<[TimelineEntity]>
 }
 
 public class OAuthClientImpl: OAuthClient {
@@ -42,32 +44,32 @@ public class OAuthClientImpl: OAuthClient {
             return Disposables.create()
         }
     }
-    
-    /*
-    public func getAPIRequestResult(of url: URL) -> Single<JSON> {
-        return .create {observer in
-            self.tokenSetup()
+
+    public func getAPIRequestResult(of url: URL, account: ACAccountPlus) -> Observable<[TimelineEntity]> {
+        return .create {[unowned self] observer in
+            self.oauthswift.client.credential.oauthToken = account.token
+            self.oauthswift.client.credential.oauthTokenSecret = account.tokenSecret
             self.oauthswift.client.get(url) {result in
                 switch result {
                 case .success(let response):
                     let jsonData = try? response.jsonObject()
-                    guard let data = jsonData else {
-                        fatalError("response could not be converted to JSON")
+//                    guard let data = jsonData else {
+//                        fatalError("response could not be converted to JSON")
+//                    }
+                    guard let rowTimeline = Mapper<TimelineEntity>().mapArray(JSONObject: jsonData) else {
+                        fatalError("Parse Error")
                     }
-                    observer(.success(JSON(data)))
-                case .failure(.serverError): observer(.error(APIError.serverError))
-                case .failure(.accessDenied): observer(.error(APIError.unauthorized))
-                case .failure(.tokenExpired): observer(.error(APIError.unauthorized))
-                case .failure(.configurationError): observer(.error(APIError.wrongSetting))
-                case let .failure(.requestError(error, request)): observer(.error(APIError.requestError(error, request)))
+                    observer.onNext(rowTimeline)
                 case .failure:
-                    observer(.error(APIError.unknown))
+                    observer.onError(APIError.network)
                 }
             }
             
             return Disposables.create()
         }
     }
+    
+    /*
     public func postTweet(of url: URL) -> Single<JSON> {
         return .create {observer in
             self.tokenSetup()
