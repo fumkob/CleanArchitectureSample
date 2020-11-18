@@ -59,7 +59,6 @@ public class SocialAccountDataStoreImpl: SocialAccountDataStore {
                 do {
                     let accountsData = try JSONEncoder().encode(accounts)
                     UserDefaults.standard.set(accountsData, forKey: "accounts")
-                    UserDefaults.standard.synchronize()
                 } catch {
                     fatalError("Save error of accounts")
                 }
