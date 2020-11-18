@@ -61,9 +61,9 @@ schemes:
         - name: CleanArchitectureSampleTests
           parallelizable: true
           randomExecutionOrder: true
-        - name: CleanArchitectureSampleUITests
-          parallelizable: true
-          randomExecutionOrder: true
+#         - name: CleanArchitectureSampleUITests
+#           parallelizable: false
+#           randomExecutionOrder: false
     profile:
       config: Release
     analyze:

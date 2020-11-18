@@ -10,7 +10,7 @@ import RxSwift
 
 protocol SocialAccountRepository {
     func getTwitterAccounts() -> Observable<[ACAccountPlus]>
-    func getNewTwitterAccount() -> Observable<Void>
+    func getNewTwitterAccount(name: String) -> Observable<Void>
 }
 
 public class SocialAccountRepositoryImpl: SocialAccountRepository {
@@ -24,7 +24,7 @@ public class SocialAccountRepositoryImpl: SocialAccountRepository {
         return dataStore.getTwitterAccounts()
     }
     
-    public func getNewTwitterAccount() -> Observable<Void> {
-        return dataStore.getNewTwitterAccount()
+    public func getNewTwitterAccount(name: String) -> Observable<Void> {
+        return dataStore.getNewTwitterAccount(name: name)
     }
 }

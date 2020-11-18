@@ -13,7 +13,7 @@ protocol LoginAccountViewInput: class {
 }
 
 class LoginAccountViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var footerLabel: UILabel!
     
@@ -29,7 +29,7 @@ class LoginAccountViewController: UIViewController {
         super.viewDidLoad()
         presenter?.loadAccounts()
     }
-
+    
     // MARK: Button Action
     @IBAction func tapCancel(_ sender: Any) {
         presenter?.tapCancel()
@@ -40,7 +40,20 @@ class LoginAccountViewController: UIViewController {
     }
     
     @IBAction func tapAdd(_ sender: Any) {
-        presenter?.tapAdd()
+        var alertTextField: UITextField?
+        
+        let alert = UIAlertController(title: "Add Twitter Account", message: "Enter Twitter account name", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: {(textField: UITextField!) in
+                alertTextField = textField
+            })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            if let name: String = alertTextField?.text {
+                self?.presenter?.tapAdd(name: name)
+                }
+            }
+        )
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

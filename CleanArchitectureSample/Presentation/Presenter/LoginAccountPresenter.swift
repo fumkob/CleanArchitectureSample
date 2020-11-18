@@ -20,7 +20,7 @@ protocol LoginAccountPresenter: class {
     func selectAccount(_ index: Int)
     func tapCancel()
     func tapReaload()
-    func tapAdd()
+    func tapAdd(name: String)
 }
 
 public class LoginAccountPresenterImpl: LoginAccountPresenter {
@@ -73,8 +73,8 @@ public class LoginAccountPresenterImpl: LoginAccountPresenter {
         loadAccounts()
     }
     
-    func tapAdd() {
-        useCase.addAccount()
+    func tapAdd(name: String) {
+        useCase.addAccount(name: name)
             .subscribe(onNext: { [weak self] in
                 self?.loadAccounts()
             }, onError: { [weak self] error in
