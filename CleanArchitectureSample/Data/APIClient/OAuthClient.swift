@@ -53,9 +53,6 @@ public class OAuthClientImpl: OAuthClient {
                 switch result {
                 case .success(let response):
                     let jsonData = try? response.jsonObject()
-//                    guard let data = jsonData else {
-//                        fatalError("response could not be converted to JSON")
-//                    }
                     guard let rowTimeline = Mapper<TimelineEntity>().mapArray(JSONObject: jsonData) else {
                         fatalError("Parse Error")
                     }
@@ -68,45 +65,4 @@ public class OAuthClientImpl: OAuthClient {
             return Disposables.create()
         }
     }
-    
-    /*
-    public func postTweet(of url: URL) -> Single<JSON> {
-        return .create {observer in
-            self.tokenSetup()
-            self.oauthswift.client.post(url) {result in
-                switch result {
-                case .success(let response):
-                    let jsonData = try? response.jsonObject()
-                    guard let data = jsonData else {
-                        fatalError("response could not be converted to JSON")
-                    }
-                    observer(.success(JSON(data)))
-                case .failure(.serverError): observer(.error(APIError.serverError))
-                case .failure(.accessDenied): observer(.error(APIError.unauthorized))
-                case .failure(.tokenExpired): observer(.error(APIError.unauthorized))
-                case .failure(.configurationError): observer(.error(APIError.wrongSetting))
-                case let .failure(.requestError(error, request)): observer(.error(APIError.requestError(error, request)))
-                case .failure:
-                    observer(.error(APIError.unknown))
-                }
-            }
-
-            return Disposables.create()
-        }
-    }
-    
-    private func tokenSetup() {
-        guard let token = self.userDefaults.dictionary(forKey: "token") as? [String:String] else {
-            fatalError("Invalid token")
-        }
-        guard let oauthToken = token["oauthToken"] else {
-            fatalError("oauthToken is nil")
-        }
-        guard let oauthTokenSecret = token["oauthTokenSecret"] else {
-            fatalError("oauthTokenSecret is nil")
-        }
-        self.oauthswift.client.credential.oauthToken = oauthToken
-        self.oauthswift.client.credential.oauthTokenSecret = oauthTokenSecret
-    }
- */
 }

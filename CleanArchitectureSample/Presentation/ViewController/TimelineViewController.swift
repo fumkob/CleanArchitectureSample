@@ -70,6 +70,7 @@ extension TimelineViewController: TimelineViewInput {
     
     func setUserModel(_ userModel: UserViewModel) {
         headerUserView.updateView(userModel)
+        headerUserView.backgroundColor = UIColor(hex: userModel.profileBackgroundColor)
         tableView.tableHeaderView = headerUserView
     }
     
@@ -123,7 +124,8 @@ extension TimelineViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch timelineStatus {
         case .normal:
-            presenter?.selectCell(timeline: timelines[indexPath.row])
+            let timeline = timelines[indexPath.row]
+            presenter?.selectCell(timeline: timeline)
         default:
             return
         }

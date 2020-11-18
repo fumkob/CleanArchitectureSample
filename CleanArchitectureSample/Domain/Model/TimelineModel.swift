@@ -18,6 +18,7 @@ public struct TimelineModel: TimelineViewModel, UserViewModel {
     let tweet: String
     let profileBackgroundUrl: String
     let userDescription: String
+    let profileBackgroundColor: String
     
     init(rowTimelineModel: TimelineEntity) {
         name = rowTimelineModel.user?.name ?? ""
@@ -26,5 +27,6 @@ public struct TimelineModel: TimelineViewModel, UserViewModel {
         tweet = rowTimelineModel.text
         profileBackgroundUrl = rowTimelineModel.user?.profileBackgroundUrl ?? ""
         userDescription = rowTimelineModel.user?.userDescription ?? ""
+        profileBackgroundColor = rowTimelineModel.user?.profileBackgroundColor ?? "FFFFFF"
     }
 }
