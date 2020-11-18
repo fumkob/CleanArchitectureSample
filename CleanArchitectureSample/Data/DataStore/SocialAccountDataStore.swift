@@ -56,12 +56,7 @@ public class SocialAccountDataStoreImpl: SocialAccountDataStore {
                     .disposed(by: self.disposeBag)
 
                 accounts.accounts.append(account)
-                do {
-                    let accountsData = try JSONEncoder().encode(accounts)
-                    UserDefaults.standard.set(accountsData, forKey: "accounts")
-                } catch {
-                    fatalError("Save error of accounts")
-                }
+                self.saveTwitterAccount(accounts: accounts)
                 observer.onNext(())
             }, onFailure: { error in
                 guard let error = error as? APIError else { fatalError("OAuthToken Error") }
@@ -75,8 +70,13 @@ public class SocialAccountDataStoreImpl: SocialAccountDataStore {
 }
 
 // MARK: - Private
-extension SocialAccountRepositoryImpl {
-    private func saveTwitterAccount() {
-        
+extension SocialAccountDataStoreImpl {
+    private func saveTwitterAccount(accounts: ACAccountsPlus) {
+        do {
+            let accountsData = try JSONEncoder().encode(accounts)
+            UserDefaults.standard.set(accountsData, forKey: "accounts")
+        } catch {
+            fatalError("Save error of accounts")
+        }
     }
 }
