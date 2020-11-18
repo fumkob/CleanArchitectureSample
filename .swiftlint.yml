@@ -5,10 +5,12 @@ excluded:
  - fastlane
 
 disabled_rules:
-#  - trailing_whitespace
+ - trailing_whitespace
 #  - colon
-#  
-# line_length: 300
+
+identifier_name:
+  min_length: 2
+line_length: 300
 # cyclomatic_complexity:
 #   warning: 20
 #   error: 50
