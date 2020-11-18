@@ -20,4 +20,5 @@ protocol UserViewModel {
     var profileUrl: String { get }
     var profileBackgroundUrl: String { get }
     var userDescription: String { get }
+    var profileBackgroundColor: String { get }
 }

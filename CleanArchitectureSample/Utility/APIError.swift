@@ -12,6 +12,7 @@ public enum APIError: Error {
     case network
     case notAuthorized
     case generic
+    case oauthError
     
     var isError: Bool {
         return self != .noError

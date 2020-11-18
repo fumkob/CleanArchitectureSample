@@ -11,7 +11,7 @@ struct LoginAccountBuilder {
     func build() -> UIViewController {
         let useCase = LoginAccountUseCaseImpl(
             loginAccountRepository: LoginAccountRepositoryImpl(dataStore: LoginAccountDataStoreImpl()),
-            socialAccountRepository: SocialAccountRepositoryImpl(dataStore: SocialAccountDataStoreImpl())
+            socialAccountRepository: SocialAccountRepositoryImpl(dataStore: SocialAccountDataStoreImpl(client: OAuthClientImpl()))
         )
         let wireframe = LoginAccountWireframeImpl()
         let vc = StoryboardScene.LoginAccount.loginAccount.instantiate()

@@ -12,7 +12,7 @@ import RxSwift
 protocol LoginAccountUseCase {
     func loadAccounts() -> Observable<RegisteredAccountsModel>
     func selectAccount(_ account: RegisteredAccountModel) -> Observable<Void>
-    func addAccount() -> Observable<Void>
+    func addAccount(name: String) -> Observable<Void>
 }
 
 // MARK: - Implementation
@@ -49,8 +49,8 @@ struct LoginAccountUseCaseImpl: LoginAccountUseCase {
             }
     }
     
-    func addAccount() -> Observable<Void> {
-        return socialAccountRepository.getNewTwitterAccount()
+    func addAccount(name: String) -> Observable<Void> {
+        return socialAccountRepository.getNewTwitterAccount(name: name)
     }
     
 }

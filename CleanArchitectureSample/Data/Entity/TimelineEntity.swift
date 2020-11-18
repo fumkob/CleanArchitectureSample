@@ -18,7 +18,7 @@ public struct TimelineEntity: Mappable {
     
     public mutating func mapping(map: Map) {
         text <- map["text"]
-        createdAt <- map["createdAt"]
+        createdAt <- map["created_at"]
         user <- map["user"]
     }
 }
@@ -29,15 +29,17 @@ public struct UserEntity: Mappable {
     var profileUrl = ""
     var profileBackgroundUrl = ""
     var name = ""
+    var profileBackgroundColor = ""
     
     public init?(map: Map) {
     }
     
     public mutating func mapping(map: Map) {
-        screenName <- map["screenName"]
+        screenName <- map["screen_name"]
         userDescription <- map["description"]
         profileUrl <- map["profile_image_url_https"]
-        profileBackgroundUrl <- map["profile_background_image_url_https"]
+        profileBackgroundUrl <- map["profile_banner_url"]
         name <- map["name"]
+        profileBackgroundColor <- map["profile_background_color"]
     }
 }
