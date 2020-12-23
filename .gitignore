@@ -96,3 +96,6 @@ vendor/
 # For Xcodegen
 *.xcodeproj
 *.xcworkspace
+
+# For Keynote
+*.key
