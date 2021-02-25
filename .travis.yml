@@ -1,0 +1,20 @@
+language: objective-c
+os: osx
+osx_image: xcode11.6
+cache:
+  - cocoapods
+  - bundler
+ 
+addons:
+- ssh_known_hosts: github.com
+ 
+before_install:
+  - gem install bundler
+  - brew install xcodegen
+
+install:
+  - bundle install --path vendor/bundle
+  - make setup
+
+script:
+  - bundle exec fastlane tests

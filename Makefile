@@ -1,6 +1,6 @@
 setup:
 	xcodegen generate
-	bundle exec pod install
+	bundle exec pod install --repo-update
 	
 setopen:
 	xcodegen generate
